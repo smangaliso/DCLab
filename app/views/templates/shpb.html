@@ -1,0 +1,76 @@
+{%extends "base.html"%} {% block content %}
+
+<!-- MultiStep Form -->
+<div class="container-fluid" id="grad1">
+  <div class="row justify-content-center mt-0">
+    <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-2 mb-1">
+      <div class="card bg-custom-1 area-style">
+        <h2><strong>Material Properties</strong></h2>
+        <p>Fill all form field to go to next step</p>
+        {% if ex %}
+        <p class="error"><strong>Error:</strong> {{ ex}} {% endif %}</p>
+
+        <div class="row">
+          <div class="col-sm-12 mx-0">
+            <form
+              id="msform"
+              method="POST"
+              action="{{url_for('trim')}}"
+              enctype="multipart/form-data"
+            >
+              <!-- progressbar -->
+              <ul id="progressbar" class="">
+                <li class="step" id="account"></li>
+                <!-- <li class="step"  id="personal"><strong>Transmission Bar</strong></li> -->
+                <li class="step" id="payment"></li>
+                <li class="step" id="confirm">
+                  <strong></strong>
+                </li>
+                <li class="step" id="confirm">
+                  <strong></strong>
+                </li>
+                <li class="step" id="confirm"><strong></strong></li>
+              </ul>
+              <!-- fieldsets -->
+              <!-- Incident Bar -->
+              {% include 'incident.html' %}
+
+              <!-- Specimen -->
+              {% include 'specimen.html' %}
+
+              <!-- Striker Bar -->
+              {% include 'I_straingauge.html' %}
+
+              <!-- Strain Gauge -->
+              {% include 'T_straingauge.html' %}
+
+              <!-- Strain data -->
+              {% include 'straindata.html' %}
+              <div style="text-align: center">
+                <button
+                  type="button"
+                  id="prevBtn"
+                  class="action-button-previous"
+                  onclick="nextPrev(-1)"
+                >
+                  Previous
+                </button>
+                <button
+                  type="button"
+                  class="action-button"
+                  id="nextBtn"
+                  onclick="nextPrev(1)"
+                >
+                  Next
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{url_for('static',filename='js/main.js')}}"></script>
+
+{% endblock %}

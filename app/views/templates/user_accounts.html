@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <!-- Title of the app -->
+    <title>Dynamic Laboratory</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/static/css/user_accounts.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <!-- Main Container -->
+    <div class="container" id="main-pane">
+      <!-- Top Pane -->
+      <div class="top-pane" id="top-pane">
+        <div class="form-selector-background" id="form-selector-background"></div>
+        <button class="toggle-button" id="login-form-selector" onclick="onLoginPageSelectorClicked()">LOGIN</button>
+        <button class="toggle-button" id="registration-form-selector" onclick="onRegistrationPageSelectorClicked()">REGISTRATION</button>
+      </div>
+      {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  <ul class=flashes>
+                  {% for message in messages %}
+                    <p style="color:#600000;">{{ message }}</p>
+                  {% endfor %}
+                  </ul>
+                {% endif %}
+            {% endwith %}
+
+      <!-- Form Container -->
+      <div class="form-container" id="form-container">
+        <!-- Form Title Pane -->
+        <h1 id="form-title"></h1>
+
+        <!-- Content Pane -->
+        <div class="content-pane" id="content-pane">
+            
+                  <!-- LOGIN FORM -->
+          <form class="user-form" id="login-form" method='POST' action="{{url_for('login')}}">
+            <!-- Username -->
+            <div class="text-box" id="text-box">
+              <i class="fa fa-user" id="user-icon"></i>
+              <input type="email" class="text-input" id="login-username" name="login-username" required>
+              <label for="username">email</label>
+            </div>
+
+            <!-- Password -->
+            <div class="text-box" id="text-box">
+              <i class="fa fa-lock" id="password-icon"></i>
+              <input type="password" class="text-input" id="login-password" name="login-password" required>
+              <label for="password">Password</label>
+            </div>
+
+            <!-- Remember Password Checkbox -->
+            <div class="remember-me" id="remember-me">
+                <input type="checkbox" class="check-box" id="check-box" name="remember-me"><span id="check-box-label">Remember Me</span>
+                <button class="button-link" id="forgot-password-link" onclick="onForgotPasswordLinkClicked()">Forgot password?</button>
+            </div>
+
+            <!-- Submit Request Button -->
+            <div class="button-wrapper">
+                <button class="submit" id="login-submit">Log In</button>
+            </div>
+
+          </form>
+
+          <!-- REGISTRATION FORM -->
+          <form class="user-form" id="registration-form" method='POST' action="{{url_for('signup')}}">
+
+            <!-- Name-->
+            <div class="text-box" id="text-box">
+              <i class="fa fa-user" id="user-icon"></i>
+              <input type="text" class="text-input" id="registration-name" name="registration-name" required>
+              <label for="username">Name</label>
+            </div>
+
+            <!-- Username | Email -->
+            <div class="text-box" id="text-box">
+              <i class="fa fa-envelope" id="user-icon"></i>
+              <input type="email" class="text-input" id="registration-username" name="registration-username" required>
+              <label for="username">Email</label>
+            </div>
+
+            <!-- Password -->
+            <div class="text-box" id="text-box">
+              <i class="fa fa-lock" id="password-icon"></i>
+              <input type="password" class="text-input" id="registration-password" name="registration-password" required>
+              <label for="password">Password</label>
+            </div>
+
+            <!-- Remember Password Checkbox -->
+            <div class="agree-to-terms" id="agree-to-terms">
+                <input type="checkbox" class="" id="agree-check-box"><span id="agree-to-terms-label">I agree to terms & conditions.</span>
+                <!-- <button class="button-link" id="forgot-password-link">Forgot password?</button> -->
+            </div>
+
+            <!-- Submit Request Button -->
+            <div class="button-wrapper">
+                <button class="submit" id="registration-submit">Register</button>
+            </div>
+          </form>
+
+          <form class="user-form" id="account-reset-form">
+            <!-- Email -->
+            <div class="text-box" id="text-box">
+              <i class="fa fa-user" id="user-icon"></i>
+              <input type="email" class="text-input" id="account-reset-email" name="account-reset-email" required>
+              <label for="account-reset-email">Email</label>
+            </div>
+
+            <!-- Password -->
+            <div class="text-box" id="text-box">
+              <i class="fa fa-lock" id="password-icon"></i>
+              <input type="password" class="text-input" id="account-reset-password" name="account-reset-password" required>
+              <label for="password">Password</label>
+            </div>
+
+            <div class="button-pane" id="account-reset-button-pane">
+              <button class="cancel-button" id="account-reset-cancel" type="reset" onclick="onCancelAccountReset()">Cancel</button>
+              <button class="reset-button" id="account-reset-submit">Reset Password</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  <!--         <Scripts>     -->
+
+    <script type="text/javascript">
+      /************************** Variables ***********************************/
+      var buttonBackground = document.getElementById("form-selector-background");
+      var loginFormSelector= document.getElementById("login-form-selector");
+      var registrationFormSelector= document.getElementById("registration-form-selector");
+      var loginForm = document.getElementById("login-form");
+      var registrationForm = document.getElementById("registration-form");
+
+      var accountResetForm = document.getElementById("account-reset-form");
+      var topPane = document.getElementById("top-pane");
+
+
+      var itemClicked = null;
+
+      /************************** Functions ***********************************/
+      function onLoginPageSelectorClicked(){
+        /* Occurs during first click */
+        if(itemClicked == null){
+          showLoginPage();
+          return;
+        }
+
+        /* Occurs on subsequent clicks */
+        if(itemClicked == loginFormSelector){
+          showRegistrationPage();
+          return;
+        }
+
+        /* Show the Login Page */
+        showLoginPage();
+      }
+
+      function onRegistrationPageSelectorClicked(){
+        /* Occurs during first click */
+        if(itemClicked == null){
+          showRegistrationPage();
+          return;
+        }
+
+        /* Occurs on subsequent clicks */
+        if(itemClicked == registrationFormSelector){
+          showLoginPage();
+          return;
+        }
+
+        /* Show The Registration Page */
+        showRegistrationPage();
+      }
+
+      function showLoginPage(){
+        buttonBackground.style.left = "0%";
+        itemClicked = loginFormSelector;
+        registrationForm.style.left = "100%";
+        loginForm.style.left = "0%";
+      }
+
+      function showRegistrationPage(){
+        buttonBackground.style.left = "50%";
+        itemClicked = registrationFormSelector;
+        registrationForm.style.left = "0%";
+        loginForm.style.left = "100%";
+      }
+
+      function onForgotPasswordLinkClicked(){
+          /*loginFormSelector.style.visibility = "hidden";*/
+          /*registrationFormSelector.style.visibility = "hidden";*/
+          /* buttonBackground.style.visibility = "hidden";*/
+          topPane.style.visibility = "hidden";
+
+          loginForm.style.left = "100%";
+          registrationForm.style.left = "100%";
+          accountResetForm.style.left = "0%";
+      }
+
+      function onCancelAccountReset(){
+        topPane.style.visibility = "visible";
+        accountResetForm.style.left = "100%";
+
+        showLoginPage();
+      }
+    </script>
+  </body>
+</html>

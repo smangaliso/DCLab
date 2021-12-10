@@ -1,0 +1,61 @@
+<fieldset>
+  <h2 class="fs-title">Specimen Properties</h2>
+  <div class="form-card">
+    <select name="specimen" id="specimen" class="form-control mb-4"></select>
+  </div>
+
+  <div class="form-card">
+    <input
+      oninput="this.className='form-control'"
+      name="specimen_diameter"
+      type="number"
+      step="0.001"
+      id="specimen_diameter"
+      class="form-control"
+    />
+    <span class="floating-label">Diameter [m]</span>
+  </div>
+  <div class="form-card">
+    <input
+      oninput="this.className='form-control'"
+      name="specimen_length"
+      type="number"
+      step="0.001"
+      id="specimen_Length"
+      class="form-control"
+    />
+    <span class="floating-label">Length [m]</span>
+  </div>
+
+  <div class="form-card">
+    <input
+      oninput="this.className='form-control'"
+      name="specimen_PR"
+      type="number"
+      step="0.001"
+      id="specimen_PR"
+      value="0.33"
+      class="form-control"
+    />
+    <span class="floating-label">Poisson's Ratio</span>
+  </div>
+</fieldset>
+
+<script>
+  let dropdown_ = $("#specimen");
+
+  dropdown_.empty();
+  dropdown_.append(
+    '<option value="" selected="true" disabled>Choose Specimen Material</option>'
+  );
+  dropdown_.prop("selectedIndex", 0);
+
+  const url_ = "{{url_for('static',filename='js/material.json')}}";
+
+  // Populate dropdown with list of provinces
+  $.getJSON(url_, function (data) {
+    $.each(data, function (key, entry) {
+      dropdown_.append($("<option></option>").attr("value", key).text(key));
+    });
+  });
+</script>

@@ -1,0 +1,46 @@
+{%extends "base.html"%} {% block content %}
+<div class="pt-4 mt-4">
+  <!-- <script>
+    
+      
+   </script> -->
+  <div class="container-fluid">
+    <div class="row justify-content-md-center">
+      <div class="col-sm-10">
+        <div class="row mb-2">
+          <div class="col-sm-6 plot-canvas" id="inc_strain"></div>
+          <div class="col-sm-6 plot-canvas" id="tran_strain"></div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-sm-6 plot-canvas" id="inc_stress_time"></div>
+          <div class="col-sm-6 plot-canvas" id="tran_stress_time"></div>
+        </div>
+
+        <div class="row mb-2">
+          <!-- <div class="col-sm-6 plot-canvas" id="inc_stress_strain"></div> -->
+          <div class="col-sm-6 plot-canvas" id="inc_strain_rate"></div>
+          <div class="col-sm-6 plot-canvas" id="tran_stress_strain"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6 plot-canvas" id="front_face"></div>
+          <div class="col-sm-6 plot-canvas" id="back_face"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var incident_strain = {{ I_data | tojson}};
+  var transmission_strain = {{ T_data | tojson}};
+  var incident_x = {{ x_data | tojson}};
+  var transmission_stress = {{ transmission_stress | tojson}}
+  var sample_stress = {{sample_stress | tojson}}
+  var back_face_force = {{back_face_force | tojson}}
+  var front_face_force = {{front_face_force | tojson}}
+  var strain_rate = {{ strain_rate | tojson}}
+</script>
+<script src="{{url_for('static',filename='js/analyze_plots.js')}}"></script>
+
+{% endblock %}

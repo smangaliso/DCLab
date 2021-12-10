@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/test.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    
+
+    <script src="{{url_for('static',filename='js/jquery.js')}}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+    
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            <h3>Welcome</h3>
+            <p>To the Flamengro Dynamic Lab!</p>
+            
+        </div>
+        <div class="col-md-9 register-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Loging</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
+                </li>
+            </ul>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul class=flashes>
+              {% for message in messages %}
+                <p style="color:#600000;">{{ message }}</p>
+              {% endfor %}
+              </ul>
+            {% endif %}
+        {% endwith %}
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                    <h3 class="register-heading">Log in to your acount</h3>
+                    <div class="row register-form">
+                        <div class="col-md-12">
+                            <form method='POST' action="{{url_for('login')}}">
+                            <div class="form-group input-group">
+                                <i class="fa fa-user" id="user-icon"></i>
+                                <input type="email" class="form-control" id="login-username" name="login-username" placeholder="email" required> 
+                            </div>
+
+                            <div class="form-group input-group">
+                                <i class="fa fa-lock" id="password-icon"></i>
+                                <input type="password" class="form-control" id="login-password" name="login-password" placeholder="password" required>
+
+                            </div>
+                           
+                            <div class="form-group input-group">
+                                <div class="maxl">
+                                    <label class="checkbox inline"> 
+                                        <input type="checkbox" class="check-box" id="check-box" name="remember-me">
+                                        <span > Remember me </span> 
+                                    </label>
+                                    <a class="pl-4 ml-4" href="#" style="color: black;">Forgot Password </a>
+                                    
+                                </div>
+
+                            </div>
+                            <input class="btnRegister" type="submit" value="login">
+                            
+                        </form>
+                        </div>
+                      
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3  class="register-heading">Register your account </h3>
+                    <div class="row register-form">
+                
+                        <div class="col-md-12">
+                           <form method='POST' action="{{url_for('signup')}}">
+                            <div class="form-group input-group">
+                                <i class="fa fa-user" id="user-icon"></i>
+                                <input type="text" class="form-control" placeholder="Name" id="registration-name" name="registration-name" required>
+                            </div>
+                            <div class="form-group input-group">
+                                <i class="fa fa-envelope" id="user-icon"></i>
+                                <input type="email" class="form-control" id="registration-username" name="registration-username" placeholder="Email" required>
+                            </div>
+                            <div class="form-group input-group">
+                                <i class="fa fa-lock" id="password-icon"></i>
+                                <input type="password" class="form-control" id="registration-password" placeholder="password" name="registration-password" required>
+                            </div>
+                            <input type="submit" class="btnRegister"  value="Register"/>
+                           </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

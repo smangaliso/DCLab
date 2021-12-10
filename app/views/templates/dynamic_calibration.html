@@ -1,0 +1,35 @@
+{%extends "base.html"%}
+
+{% block content %}
+
+<!-- MultiStep Form -->
+<div class="container-fluid" id="grad1">
+    <div class="row justify-content-center mt-0">
+        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-2 mb-1">
+            
+            <div class="card bg-custom-1 area-style">
+                <h2><strong>Material Properties</strong></h2>
+                <p>Fill all form field to go to next step</p>
+                <div class="row">
+                    <div class="col-sm-12 mx-0">
+                        <form id="msform" method='POST' action="{{url_for('trim_dc')}}"  enctype="multipart/form-data">
+
+                            <div class="file-upload-wrapper" data-text="Select your file!">
+                                <input name="file_upload" type="file" class="file-upload-field" value="">
+                              </div>
+                           
+        
+                            <button type="submit" class="action-button" id="nextBtn">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+   
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+<fieldset>
+  <h2 class="fs-title">Strain Data Properties</h2>
+
+  <div class="form-card mt-4" id="file-selector">
+    <label for="file-input" class="input-label">
+      <input
+        type="file"
+        name="file-input"
+        id="file-input"
+        class="file-input"
+        onChange="selectFile(this)"
+        accept=".config"
+      />
+      <img src="upload.svg" alt="" class="upload-icon" />
+      <span class="input-text" id="input-text" value=""
+        >Choose Config File</span
+      >
+    </label>
+  </div>
+
+  <input type="text" name="config-data" hidden />
+</fieldset>

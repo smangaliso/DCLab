@@ -1,0 +1,322 @@
+{%extends "base.html"%}
+ {% block content %}
+<div class="card trim-card" style="width: 85%">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <span class="d-block p-2">
+          <select class="classic">
+            <option>Select Data File</option>
+            <option>......</option>
+            <option>.....</option>
+          </select>
+        </span>
+        <span class="d-block p-2">
+          Number of samples: <span id="num-samples"></span>
+        </span>
+        <span class="d-block p-2">
+          Total Duration: <span id="total-duration"></span>
+        </span>
+        <span class="d-block p-2">
+          <input type="checkbox" checked /> pre-trim
+        </span>
+        <span class="d-block p-2">
+          <input
+            class="btn btn-primary"
+            type="submit"
+            value="load data"
+            style="width: 150px"
+          />
+        </span>
+      </div>
+      <div class="col-sm-9">
+        <nav>
+          <div
+            class="nav nav-tabs navbar-light nav-fill"
+            id="nav-tab"
+            role="tablist"
+          >
+            <a
+              class="nav-item nav-link active mx-1 my-1"
+              id="nav-home-tab"
+              data-toggle="tab"
+              href="#inc_strain"
+              role="tab"
+              aria-controls="inc_strain"
+              aria-selected="true"
+              >incident Bar Strain</a
+            >
+            <a
+              class="nav-item nav-link mx-1 my-1"
+              id="nav-profile-tab"
+              data-toggle="tab"
+              href="#tran_strain"
+              role="tab"
+              aria-controls="tran_strain"
+              aria-selected="false"
+              >Transmission Bar Strain</a
+            >
+          </div>
+        </nav>
+        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+          <div
+            class="tab-pane fade show active plot-demo"
+            id="inc_strain"
+            role="tabpanel"
+            aria-labelledby="nav-home-tab"
+          ></div>
+          <div
+            class="tab-pane fade plot-demo"
+            id="tran_strain"
+            role="tabpanel"
+            aria-labelledby="nav-profile-tab"
+          ></div>
+        </div>
+        <form
+          method="POST"
+          action="{{url_for('analyze')}}"
+          enctype="multipart/form-data"
+        >
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="incident_values"
+              name="incident_values"
+              hidden
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="transmission_values"
+              name="transmission_values"
+              hidden
+              required
+            />
+          </div>
+
+          <button type="submit" class="trim-button">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+        var transmission_strain = {{t_strain_data | tojson}}; //98
+        var incident_strain = {{i_strain_data | tojson}};
+        var x = {{x_data | tojson}};
+        // Initialize the echarts instance based on the prepared dom
+
+        var chart1 = echarts.init(document.querySelector("#inc_strain"));
+        chart1_plot = render_plots(x,incident_strain, "Incident Bar Strain","time","strain");
+        chart1.setOption(chart1_plot);
+        chart1.on('dataZoom', updateData)
+
+       var chart2 = echarts.init(document.querySelector("#tran_strain"));
+       chart2_plot = render_plots(x,transmission_strain, "Transmission Bar Strain", "time", "strain");
+       chart2.setOption(chart2_plot);
+       chart2.on("dataZoom", updateData1)
+
+      function updateData(params)
+    {
+
+             var start_time, end_time;
+             var batch={};
+
+             if (params.hasOwnProperty('batch')) {
+
+
+                 start_time = params.batch[0].startValue;
+                 end_time = params.batch[0].endValue;
+
+
+
+             }
+             else{
+
+                 var time_data = x;
+
+                 var start_factor = params.start;
+                 var stop_factor = params.end;
+                 var length = time_data.length;
+
+                 start_time = Math.floor(start_factor * length  / 100);
+                 end_time = Math.ceil(stop_factor * length  / 100);
+
+
+
+
+
+
+             }
+
+             document.getElementById("incident_values").value=[start_time,end_time]
+
+         }
+
+
+
+    function updateData1(params)
+  {
+
+           var start_time, end_time;
+           var batch={};
+
+           if (params.hasOwnProperty('batch')) {
+
+
+               start_time = params.batch[0].startValue;
+               end_time = params.batch[0].endValue;
+
+
+
+           }
+           else{
+
+               var time_data = x;
+
+               var start_factor = params.start;
+               var stop_factor = params.end;
+               var length = time_data.length;
+
+               start_time = Math.floor(start_factor * length  / 100);
+               end_time = Math.ceil(stop_factor * length  / 100);
+
+
+
+
+
+
+           }
+
+           document.getElementById("transmission_values").value=[start_time,end_time]
+
+       }
+
+
+
+        function render_plots(x, y,title,xname,yname)
+       {
+
+          option = {
+          tooltip: {
+              trigger: 'axis',
+              position: function (pt) {
+                  return [pt[0], '10%'];
+              }
+          },
+          title: {
+              left: 'center',
+              text: title,
+              textStyle: {
+                      color: '#f8f8ff'
+          },
+          },
+          toolbox: {
+              feature: {
+                  dataZoom: {
+                      yAxisIndex: 'none'
+                  },
+                  restore: {},
+                  saveAsImage: {}
+              },
+              iconStyle: {
+                  borderColor: "rgba (255,255,255)",
+          }
+            },
+          xAxis: {
+              type: 'category',
+              boundaryGap: false,
+              axisLabel:{
+                  color:"#fffafa",
+              },
+              nameTextStyle: {
+                      color: "#fffafa",
+                      padding: [8, 8, 8, 8],
+                      fontWeight: "bold",
+              },
+              name: xname,
+              nameLocation: "middle",
+              data:x
+
+
+
+          },
+          yAxis: {
+              type: 'value',
+              boundaryGap: [0, '100%'],
+              axisLabel:{
+                  color:"#fffafa",
+
+              },
+              nameTextStyle: {
+                      color: "#fffafa",
+                      fontWeight: "bold",
+                      padding: [0, 0, 20, 0]
+              },
+              name: yname,
+              nameLocation: "middle",
+              nameGap: 25,
+
+          },
+          dataZoom: [
+                  {
+                      type: 'slider',
+                      show: true,
+                      start: 94,
+                      end: 100,
+                      handleSize: 8,
+                      bottom: "1%",
+                  },
+                  {
+                      type: 'inside',
+                      start: 94,
+                      end: 100
+                  },
+
+              ],
+          series: [
+              {
+                  name: title,
+                  type: 'line',
+                  symbol: 'none',
+                  sampling: 'lttb',
+                  itemStyle: {
+                      color: 'rgb(255, 70, 131)'
+                  },
+                  areaStyle: {
+                      color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                          offset: 0,
+                          color: 'rgb(255, 158, 68)'
+                      }, {
+                          offset: 1,
+                          color: 'rgb(255, 70, 131)'
+                      }])
+                  },
+                  data: y
+              }
+          ]
+      };
+
+      return option
+
+      }
+
+
+        $("#nav-profile-tab").on("shown.bs.tab", function (e) {
+          chart2.resize();
+        });
+        $("#nav-home-tab").on("shown.bs.tab", function (e) {
+          chart1.resize();
+        });
+
+        window.addEventListener("resize", function () {
+          chart1.resize();
+          chart2.resize();
+        });
+</script>
+
+{% endblock %}

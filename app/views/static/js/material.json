@@ -1,0 +1,192 @@
+{
+    "AISI1006, Cold Drawn": {
+        "Modulus": "206",
+        "Density": "7872",
+        "Yield Stress": "285",
+        "Ultimate Stress": "330",
+        "Hardness": "55",
+        "Hardness_ID": "",
+        "Acoustic Velocity": "5115.535083",
+        "Impedance": "4.03E+07"
+    },
+    "AISI1006, Hot Rolled": {
+        "Modulus": "206",
+        "Density": "7872",
+        "Yield Stress": "165",
+        "Ultimate Stress": "295",
+        "Hardness": "49",
+        "Hardness_ID": "",
+        "Acoustic Velocity": "5115.535083",
+        "Impedance": "4.03E+07"
+    },
+    "AISI4340, Annealed": {
+        "Modulus": "192",
+        "Density": "7850",
+        "Yield Stress": "470",
+        "Ultimate Stress": "745",
+        "Hardness": "95",
+        "Hardness_ID": "",
+        "Acoustic Velocity": "4945.56354",
+        "Impedance": "3.88E+07"
+    },
+    "AISI4340, Normalized": {
+        "Modulus": "200",
+        "Density": "7850",
+        "Yield Stress": "862",
+        "Ultimate Stress": "1282",
+        "Hardness": "100",
+        "Hardness_ID": "",
+        "Acoustic Velocity": "5047.544651",
+        "Impedance": "3.96E+07"
+    },
+    "AISI4340, Oil Quenched": {
+        "Modulus": "200",
+        "Density": "7850",
+        "Yield Stress": "1145",
+        "Ultimate Stress": "1207",
+        "Hardness": "99",
+        "Hardness_ID": "",
+        "Acoustic Velocity": "5047.544651",
+        "Impedance": "3.96E+07"
+    },
+    "AISI 18Ni (200)": {
+        "Modulus": "183",
+        "Density": "8000",
+        "Yield Stress": "1780",
+        "Ultimate Stress": "1844",
+        "Hardness": "119",
+        "Hardness_ID": "52 RC",
+        "Acoustic Velocity": "4782.781617",
+        "Impedance": "3.83E+07"
+    },
+    "AISI 18Ni (250)": {
+        "Modulus": "190",
+        "Density": "8000",
+        "Yield Stress": "1784",
+        "Ultimate Stress": "1844",
+        "Hardness": "118",
+        "Hardness_ID": "51.8 RC",
+        "Acoustic Velocity": "4873.397172",
+        "Impedance": "3.90E+07"
+    },
+    "AISI 18Ni (300)": {
+        "Modulus": "190",
+        "Density": "8000",
+        "Yield Stress": "2000",
+        "Ultimate Stress": "2027",
+        "Hardness": "120",
+        "Hardness_ID": "RC 54.7",
+        "Acoustic Velocity": "4873.397172",
+        "Impedance": "3.90E+07"
+    },
+    "ARMOX 500T": {
+        "Modulus": "163.946465",
+        "Density": "7850",
+        "Yield Stress": "1250",
+        "Ultimate Stress": "1450",
+        "Hardness": "540",
+        "Hardness_ID": "Brinell",
+        "Acoustic Velocity": "4570",
+        "Impedance": "3.59E+07"
+    },
+    "AISI304, Stainless": {
+        "Modulus": "193",
+        "Density": "8000",
+        "Yield Stress": "215",
+        "Ultimate Stress": "505",
+        "Hardness": "70",
+        "Hardness_ID": "RB",
+        "Acoustic Velocity": "4911.720676",
+        "Impedance": "3.93E+07"
+    },
+    "Copper, Annealed": {
+        "Modulus": "110",
+        "Density": "8930",
+        "Yield Stress": "33.3",
+        "Ultimate Stress": "210",
+        "Hardness": "50",
+        "Hardness_ID": "Vickers",
+        "Acoustic Velocity": "3509.70499",
+        "Impedance": "3.13E+07"
+    },
+    "Aluminium 6061-T6": {
+        "Modulus": "68.9",
+        "Density": "2700",
+        "Yield Stress": "276",
+        "Ultimate Stress": "310",
+        "Hardness": "",
+        "Hardness_ID": "",
+        "Acoustic Velocity": "5051.585743",
+        "Impedance": "1.36E+07"
+    },
+    "Titanium": {
+        "Modulus": "110",
+        "Density": "4390",
+        "Yield Stress": "900",
+        "Ultimate Stress": "980",
+        "Hardness": "",
+        "Hardness_ID": "",
+        "Acoustic Velocity": "5005.691521",
+        "Impedance": "2.20E+07"
+    },
+    "Silver Steel": {
+        "Modulus": "200",
+        "Density": "8000",
+        "Yield Stress": "1650",
+        "Ultimate Stress": "1900",
+        "Hardness": "",
+        "Hardness_ID": "",
+        "Acoustic Velocity": "5000",
+        "Impedance": "4.00E+07"
+    },
+    "Gilding Metal (Brass)": {
+        "Modulus": "125",
+        "Density": "8750",
+        "Yield Stress": "",
+        "Ultimate Stress": "400",
+        "Hardness": "60",
+        "Hardness_ID": "Brinell",
+        "Acoustic Velocity": "3779.64473",
+        "Impedance": "3.31E+07"
+    },
+    "Aluminium 6082-T6": {
+        "Modulus": "70",
+        "Density": "2700",
+        "Yield Stress": "250",
+        "Ultimate Stress": "290",
+        "Hardness": "",
+        "Hardness_ID": "",
+        "Acoustic Velocity": "5091.750772",
+        "Impedance": "1.37E+07"
+    },
+    "Aluminium 7075": {
+        "Modulus": "71.7",
+        "Density": "2810",
+        "Yield Stress": "503",
+        "Ultimate Stress": "572",
+        "Hardness": "",
+        "Hardness_ID": "",
+        "Acoustic Velocity": "5051.337866",
+        "Impedance": "1.42E+07"
+    },
+    "Kevlar - 49 Aramid Fibre": {
+        "Modulus": "112",
+        "Density": "1440",
+        "Yield Stress": "600",
+        "Ultimate Stress": "3000",
+        "Hardness": "",
+        "Hardness_ID": "",
+        "Acoustic Velocity": "8819.171037",
+        "Impedance": "1.27E+07"
+    },
+    "Polyurethane": {
+        "Modulus": "0.167",
+        "Density": "1160",
+        "Yield Stress": "7.89",
+        "Ultimate Stress": "23.6",
+        "Hardness": "",
+        "Hardness_ID": "",
+        "Acoustic Velocity": "379.4278815",
+        "Impedance": "4.40E+05"
+    }
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/dygraph.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/bootstrap.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/all.css') }}">
+    <script src="{{url_for('static',filename='js/echarts.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/d3.min.js')}}"></script>
+    
+
+    
+    
+    
+    <title>{{title}}</title>
+</head>
+<body class="hero-image">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark z-bg scrolling-navbar">
+        <div class="container">
+    
+          <!-- Brand -->
+          <a class="navbar-brand" href="/" >
+            <strong>FLAMENGRO</strong>
+          </a>
+    
+          <!-- Collapse -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <!-- Links -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About FLAMENGRO</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#/" target="_blank">Free download</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" target="_blank">Free tutorials</a>
+              </li>
+            </ul>
+    
+            <!-- Right -->
+            <ul class="navbar-nav nav-flex-icons">
+              <li class="nav-item">
+                <a href="#" class="nav-link" target="_blank">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link" target="_blank">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link border border-light rounded"
+                  target="_blank">
+                  <i class="fab fa-github mr-2"></i>FLAMENGRO Gitlab
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/logout" class="nav-link">
+                  <i class="fab fa-sign-out mr-2"></i>Logout
+                </a>
+              </li>
+
+            </ul>
+    
+          </div>
+    
+        </div>
+      </nav>
+      <script src="{{url_for('static',filename='js/jquery.js')}}" ></script>
+      <br>
+      
+       {%block content %}
+       {%endblock%}
+     </div> 
+      
+    <!-- <div class="footer z-bg">
+       
+        <div class="footer-copyright text-center py-3">© <span id="demo"></span> Copyright: Flamengro
+          <script>
+            var today = new Date();
+            var year = today.getFullYear();
+            document.getElementById("demo").innerHTML = year;
+
+          </script>
+            
+        </div>
+    
+    </div>  -->
+</body>
+
+<script src="{{url_for('static',filename='js/popper.js')}}"></script>
+<script src="{{url_for('static',filename='js/bootstrap.js')}}"></script>
+<script src="{{url_for('static',filename='js/bootstrap.bundle.js')}}"></script>
+
+
+
+
+	
+
+
+</html>

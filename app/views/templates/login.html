@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+
+    <!-- Title Of The App -->
+    <title>FlameDynLab</title>
+
+    <!-- Stylesheets -->
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/bootstrap.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/all.css') }}">
+
+
+  </head>
+  <body >
+    <div class="main-pane">
+      <div class="form-container">
+        <!-- Top Button Panel: contains selector for log in and register forms -->
+        <div class="button-pane">
+          <!-- Button Gradient Color Background Item -->
+          <div id="button-bg"></div>
+          <!-- Log in form selector -->
+          <button type="button" name="button" class="toggle-btn" onclick="showLoginForm()">Log In</button>
+          <!-- Register form selector -->
+          <button type="button" name="button" class="toggle-btn" onclick="showRegistrationForm()">Register</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" class="input-form" action="index.html" method="post">
+          <!-- User name field -->
+          <input type="text" name="" value="" class="input-field" placeholder="Username" required>
+          <!-- Password field -->
+          <input type="text" name="" value="" class="input-field" placeholder="Password" required>
+          <!-- Remember Me checkbox -->
+          <input type="checkbox" name="" value="" class="checkbox"><span>Remember Me</span>
+          <!-- Log in button -->
+          <button type="button" name="button" class="submit-btn">Log In</button>
+        </form>
+
+        <form id="register-form" class="input-form" action="index.html" method="post">
+          <!-- User ID field -->
+          <input type="text" name="" value="" class="input-field" placeholder="User ID" required>
+          <!-- User Email Field -->
+          <input type="email" name="" value="" class="input-field" placeholder="Email" required>
+          <!-- Password field -->
+          <input type="text" name="" value="" class="input-field" placeholder="Password" required>
+          <!-- I Agree checkbox -->
+          <input type="checkbox" name="" value="" class="checkbox"><span>I Agree to terms & conditions</span>
+          <!-- Log in button -->
+          <button type="button" name="button" class="submit-btn">Register</button>
+        </form>
+
+      </div>
+    </div>
+
+    <script type="text/javascript">
+            var loginForm = document.getElementById("login-form");
+            var registerForm = document.getElementById("register-form");
+            var buttonBg = document.getElementById("button-bg");
+
+            function showLoginForm(){
+              loginForm.style.left = "50px";
+              registerForm.style.left = "450px";
+              buttonBg.style.left = "0%";
+            }
+
+            function showRegistrationForm(){
+              loginForm.style.left = "-400px";
+              registerForm.style.left = "50px";
+              buttonBg.style.left = "51%";
+            }
+
+    </script>
+  </body>
+</html>
