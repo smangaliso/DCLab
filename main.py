@@ -1,4 +1,4 @@
-from app import app
+from app import create_app
 import numpy as np
 from app.models.models import *
 
@@ -9,6 +9,7 @@ def main():
 
     :return:
     """
+    app = create_app()
     app.run(debug=True)
 
 

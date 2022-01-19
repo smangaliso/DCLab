@@ -48,8 +48,8 @@ def calculate_dynamic_force(transmission_bar: TransmissionBar = None, incident_b
     force_0 = transmission_bar.area * transmission_bar.elastic_modulus * transmission_bar.strain_data
 
     # Calculate dynamic force on incident bar
-    max_len = min(transmission_bar.strain_data.size, incident_bar.strain_data.size)
-    d_strain = incident_bar.strain_data[0:max_len] - transmission_bar.strain_data[0:max_len]
+    max_len = min(incident_bar.incident_strain.size, incident_bar.reflected_pulse.size)
+    d_strain = incident_bar.incident_strain[0:max_len] - incident_bar.reflected_pulse[0:max_len]
     force_1 = incident_bar.area * incident_bar.elastic_modulus * d_strain
 
     # Update output dictionary
@@ -72,7 +72,7 @@ def calculate_strain_rate(transmission_bar: TransmissionBar = None, incident_bar
     v = np.sqrt(incident_bar.elastic_modulus / incident_bar.density)
 
     # Calculate strain rate
-    strain_rate = -2*v*transmission_bar.strain_data / specimen.length
+    strain_rate = -2*v*incident_bar.reflected_pulse / specimen.length
 
     # Update output
     output["specimen"] = strain_rate

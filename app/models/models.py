@@ -98,6 +98,8 @@ class IncidentBar(Bar):
     """
 
     """
+    incident_strain: Array = Array(dtype=np.float_, shape=None)
+    reflected_pulse: Array = Array(dtype=np.float_, shape=None)
 
 
 class TransmissionBar(Bar):
